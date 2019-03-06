@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Busqueda{% endblock %}
+
+{% block contenido %}
+    <div class="row justify-content-center align-items-center mt-5">
+      {{ form_start(form, { 'attr':{ 'class':'col-6' }} ) }}
+        <div class="form-group">
+          {{ form_label(form.curp) }}
+          {{ form_errors(form.curp) }}
+          {{ form_widget(form.curp) }}
+        </div>
+      {{ form_end(form) }}   
+    </div>
+{% endblock %}

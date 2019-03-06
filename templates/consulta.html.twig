@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ curp }}{% endblock %}
+
+{% block contenido %}
+	<div class="row justify-content-center align-items-center mt-5">
+		<div class="col-6">
+			<div class="row">
+				<div class="col-md-12">
+					<h6>Incidencias del docente:</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					{% if consulta %}
+						{% for consultas in consulta  %}
+							<h3>{{ consultas.MOTIVO }}</h3>
+						{% endfor %}
+					{% else %}
+						<h3>SIN INCIDENCIAS REPORTADAS</h3>
+					{% endif %}
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-md-12">
+					<h6>Plazas del docente:</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+  						<thead class="thead-dark">
+    						<tr>
+      							<th scope="col">Plaza</th>
+      							<th scope="col">Contrato</th>
+      							<th scope="col">Ingreso</th>
+      							<th scope="col">Inicio</th>
+      							<th scope="col">Fin</th>
+      							<th scope="col">C.T.</th>
+      							<th scope="col">Origen</th>
+    						</tr>
+  						</thead>
+  						<tbody>
+  							{% for plazas in plaza  %}
+								<tr>
+									<th scope="row">{{ plazas.CODIGO_PAGO}}{{ plazas.NO_UNIDAD }}{{ plazas.NO_SUBUNIDAD }}{{ plazas.NO_PUESTO }}{{ plazas.HORAS }}{{ plazas.NO_CONSECUTIVO }}</th>
+									<th>{{ plazas.CONDIGO_CONTRATACION }}</th>
+									<th>{{ plazas.FECHA_ANTIGUEDAD }}</th>
+									<th>{{ plazas.FECHA_INICIO }}</th>
+									<th>{{ plazas.FECHA_VENCIMIENTO }}</th>
+									<th>{{ plazas.CLAVE_AREA }}</th>
+									<th>{{ plazas.DESCRIPCION }}</th>
+								</tr>
+							{% endfor %}
+  						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<a class="btn btn-primary" href="{{ path('inicio') }}">Nueva Busqueda</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
